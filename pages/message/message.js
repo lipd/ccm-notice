@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    message: {}
+    message: {},
   },
 
   /**
@@ -20,7 +20,11 @@ Page({
       url: `${config.protocol}://${config.host}/messages/${this.id}`,
       method: 'GET',
       success: (res) => {
-        const message =  res.data.message
+        const message = res.data.message
+        const date = new Date(message.createdAt)
+        const minutesNum = date.getMinutes()
+        const minutes = minutesNum < 10 ? '0' + minutesNum : minutesNum
+        message.time = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${minutes}`
         this.setData({ message })
       }
     })
