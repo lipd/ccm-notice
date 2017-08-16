@@ -12,7 +12,6 @@
       </view>
       <view class="message-footer">
         <image src="../../img/vote.png"></image>
-        <image src="../../img/share.png"></image>
       </view>
     </view>
 </template>

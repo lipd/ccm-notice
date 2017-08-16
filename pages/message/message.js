@@ -15,9 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const id = options.id
+    this.id = options.id
     wx.request({
-      url: `${config.protocol}://${config.host}/messages/${id}`,
+      url: `${config.protocol}://${config.host}/messages/${this.id}`,
       method: 'GET',
       success: (res) => {
         const message =  res.data.message
@@ -71,7 +71,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    console.log(res)
+    return {
+      title: `${this.data.message.title}`,
+      path: `/pages/message/message?id=${this.id}`
+    }
   }
 })
