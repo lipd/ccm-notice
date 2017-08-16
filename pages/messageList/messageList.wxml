@@ -20,7 +20,7 @@
       </view>
       <view class="message-footer">
         <image src="../../img/vote.png"></image>
-        <navigator url="/pages/message/message?id={{message.id}}">
+        <navigator hover-class="none" url="/pages/message/message?id={{message.id}}">
           <image src="../../img/command.png"></image>
         </navigator>
         <image src="../../img/share.png"></image>
