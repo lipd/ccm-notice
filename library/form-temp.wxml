@@ -1,0 +1,28 @@
+<!-- TODO: change singular to plural -->
+<template name="widget-photowall">
+  <view class="widget">
+
+    <text class="widget-header">
+      <text>{{title}}</text>
+      <text class="widget-header-info">{{urls.length}}/3</text>
+    </text>
+
+    <view class="photowall">
+      <view class="photo-container" wx:for="{{urls}}" wx:key="url" wx:for-item="url">
+        <image class="photo-item" src="{{url}}"></image>
+      </view>
+      <view class="plus-icon-container" bindtap="chooseImage">
+        <image class="plus-icon-photo" src="../../library/card-design/img/plus.png"></image>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<template name="widget-picker">
+  <picker class="widget" bindchange="handlePickerChange" range="{{items}}">
+    <text class="picker-at">@</text>
+    <text class="picker-info">{{items[index]}}</text>
+  </picker>
+</template>
+

@@ -1,0 +1,28 @@
+<template is="everyday-message-list" data="{{sortedMessages}}"></template>
+
+<navigator wx:if="{{canSendMessage}}" url="/pages/messageForm/messageForm">
+  <image class="add-icon" src="../../img/write.png"></image>
+</navigator>
+
+<template name="everyday-message-list">
+  <view class="everyday-message" wx:key="{{dailyMessage.date}}" wx:for="{{sortedMessages}}" wx:for-item="dailyMessages">
+    <view class="message-date">
+      <text class="date-text">{{dailyMessages.date}}</text>
+    </view>
+    <view class="message-card" wx:key="{{message.id}}" wx:for="{{dailyMessages.messages}}" wx:for-item="message">
+      <view class="message-header">
+        <view class="message-author">{{message.department}}</view>
+        <view class="message-time">{{message.time}}</view>
+      </view>
+      <view class="message-body">
+        <view class="message-title">{{message.title}}</view>
+        <view class="message-content">{{message.content}}</view>
+      </view>
+      <view class="message-footer">
+        <image src="../../img/vote.png"></image>
+        <image src="../../img/command.png"></image>
+        <image src="../../img/share.png"></image>
+      </view>
+    </view>
+  </view>
+</template>

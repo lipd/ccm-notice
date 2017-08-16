@@ -1,0 +1,5 @@
+@import "library/form-temp.wxss";
+page {
+  word-wrap: break-word;
+  background: #f6f6f6;
+}

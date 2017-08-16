@@ -1,0 +1,26 @@
+<import src="../../library/form-temp.wxml"/>
+<form bindsubmit="handleSubmit">
+
+  <view class="card">
+    <view class="field">
+      <view class="widget center-title">通知发布</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <input class="widget" placeholder="部门" confirm-type="next" name="department" />
+    </view>
+    <view class="field">
+      <input class="widget" placeholder="标题" confirm-type="next" name="title" />
+    </view>
+    <view class="field">
+      <textarea class="widget" placeholder="内容" name="content" />
+    </view>
+  </view>
+
+  <view class="card card-transparent">
+    <button class="card-button" formType="submit">确认</button>
+  </view>
+
+</form>

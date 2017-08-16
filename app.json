@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/messageList/messageList",
+    "pages/message/message",
+    "pages/messageForm/messageForm"
+  ],
+  "window": {
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

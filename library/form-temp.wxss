@@ -1,0 +1,116 @@
+/* <卡片组件> */
+
+/* 卡片 */
+.card {
+  margin: 20rpx;
+  font-size: 12pt;
+  background: #fff;
+  box-shadow: 2rpx 2rpx 2px 2rpx #c6c6c6;
+}
+.card-transparent {
+  box-shadow: none;
+  background: transparent;
+}
+
+.field {
+  border-bottom: 4rpx solid #f3f3f3;
+}
+.field:last-child {
+  border: none;
+}
+
+.widget {
+  /*微信无法使用通用选择器*/
+  padding: 30rpx 30rpx 30rpx 40rpx;
+}
+.widget-header-info {
+  position: absolute;
+  right: 60rpx;
+  color: #808080;
+}
+
+/* 轮盘信息采集器 */
+picker {
+  font-size: 12pt;
+}
+.picker-at {
+  color: #65cc5c;
+  font-size: 14pt;
+  margin-right: 25rpx;
+}
+/*进行了手动对齐调整*/
+.picker-info {
+  position: relative;
+  top: -2pt;
+}
+
+/* 没有间距的卡片 */
+.seamless-card {
+  margin-top: 0;
+}
+/* 固定在底部的卡片 */
+.fixed-bottom-card {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 卡片的表单域 */
+
+/* 标题右侧的信息 */
+/* 可以用来表示照片数量 */
+.card-info {
+  position: absolute;
+  right: 30rpx;
+  color: #808080;
+}
+/* 照片墙 */
+.photowall {
+  display: flex;
+  padding: 30rpx 20rpx 0rpx 20rpx;
+}
+/* 照片的外框 */
+.photo-container {
+  margin-right: 12rpx;
+}
+.photo-item {
+  width: 140rpx;
+  height: 140rpx;
+}
+.plus-icon-container {
+  width: 132rpx;
+  height: 132rpx;
+  border: 4rpx solid #D9D9D9;
+  border-radius: 3px;
+  box-sizing: content-box;
+}
+.plus-icon-photo {
+  width: 132rpx;
+  height: 132rpx;
+}
+
+
+
+/* 卡片表单底部的按钮 */
+.card-button {
+  margin: 20rpx;
+  background: #efbd57;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 10rpx;
+  box-shadow: 2rpx 2rpx 2px 2rpx #c6c6c6;
+}
+/* 去除边框 */
+.card-button::after {
+  display: none;
+}
+/* 默认的点击效果 */
+.button-hover {
+  background: #c09845;
+  box-shadow: none;
+}
+.center-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 600;
+}
