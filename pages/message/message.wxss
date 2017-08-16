@@ -1,1 +1,65 @@
-/* message.wxss */
+.add-icon {
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  border-radius: 50%;
+  background: #efbd56;
+  height: 70rpx;
+  width: 70rpx;
+  padding: 10rpx;
+}
+.message-date {
+  text-align: center;
+  margin: 10rpx 0 40rpx 0;
+}
+.date-text {
+  padding: 8rpx 12rpx;
+  border-radius: 20rpx;
+  background: #cecece;
+  color: #fff;
+  font-weight: 500;
+  font-size: 10pt;
+}
+.message-card {
+  margin: 10rpx 0 30rpx;
+  font-size: 11pt;
+  background: #fff;
+  box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
+}
+.message-header {
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  font-size: 14pt;
+  font-weight: 300;
+  padding: 20rpx 30rpx 0;
+}
+.message-author {
+  flex: 2;
+}
+.message-time {
+  flex: 1;
+  text-align: right;
+  font-size: 10pt;
+  color: #999;
+  padding-right: 0rpx;
+}
+.message-body {
+  margin: 20rpx 30rpx;
+  padding: 20rpx;
+  background: #fafafa;
+}
+.message-title {
+  font-weight: 500;
+  padding-bottom: 14rpx;
+  color: #efbd57;
+}
+.message-footer {
+  padding: 10rpx 30rpx 30rpx;
+  display: flex;
+}
+.message-footer image {
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 60rpx;
+}

@@ -1,2 +1,18 @@
-<!--message.wxml-->
-<text>message.wxml</text>
+<template is="message" data="{{...message}}"></template>
+
+<template name="message">
+    <view class="message-card">
+      <view class="message-header">
+        <view class="message-author">{{department}}</view>
+        <view class="message-time">{{time}}</view>
+      </view>
+      <view class="message-body">
+        <view class="message-title">{{title}}</view>
+        <view class="message-content">{{content}}</view>
+      </view>
+      <view class="message-footer">
+        <image src="../../img/vote.png"></image>
+        <image src="../../img/share.png"></image>
+      </view>
+    </view>
+</template>
