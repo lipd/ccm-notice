@@ -1,4 +1,5 @@
 <template is="message" data="{{...message}}"></template>
+<template is="vote" data="{{message}}"></template>
 
 <template name="message">
     <view class="message-card">
@@ -14,4 +15,10 @@
         <view class="message-share" bindtap="handleShare">...</view>
       </view>
     </view>
+</template>
+
+<template name="vote">
+  <view class="vote-card">
+    <image class="vote-icon" src="../../img/vote-hl.png"></image>
+  </view>
 </template>
