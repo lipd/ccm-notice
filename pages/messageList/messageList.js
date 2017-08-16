@@ -21,6 +21,19 @@ Page({
   onPullDownRefresh: function () {
     this.onReady()
   },
+  handleShare: function (e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/message/message?id=${id}`,
+      success: () => {
+        wx.showToast({
+          title: '点击右上角进行分享',
+          image: '../../img/share-hl.png',
+          doration: 2000
+        })
+      }
+    })
+  },
   // divide message into different array by date
   // switch the date format
   sortMessages: function(messages) {
