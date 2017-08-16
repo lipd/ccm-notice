@@ -10,6 +10,12 @@ Page({
   data: {
     message: {},
   },
+  handleShare: function () {
+    wx.showToast({
+      title: '点击右上角进行分享',
+      image: '../../img/share-hl.png',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

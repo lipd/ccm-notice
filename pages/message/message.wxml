@@ -11,7 +11,7 @@
       </view>
       <view class="message-footer">
         <view class="message-time">{{time}}</view>
-        <view class="message-share">...</view>
+        <view class="message-share" bindtap="handleShare">...</view>
       </view>
     </view>
 </template>
