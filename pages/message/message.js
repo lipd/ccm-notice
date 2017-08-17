@@ -44,8 +44,12 @@ Page({
         success: (res) => {
           const newReply = res.data.reply
           const replys = this.data.replys
+          const inputContent = ''
           replys.unshift(newReply)
-          this.setData({ replys })
+          this.setData({ replys, inputContent })
+          wx.showToast({
+            title: '发送成功'
+          })
         }
       })
     } else {
