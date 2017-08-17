@@ -12,7 +12,7 @@
       </view>
       <view class="message-body">
         <view class="message-title">{{title}}</view>
-        <view class="message-content">{{content}}</view>
+        <view class="message-content"><text>{{content}}</text></view>
       </view>
       <view class="message-footer">
         <view class="message-time">{{time}}</view>

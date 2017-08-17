@@ -16,7 +16,7 @@
       </view>
       <view class="message-body">
         <view class="message-title">{{message.title}}</view>
-        <view class="message-content">{{message.content}}</view>
+        <view class="message-content"><text>{{message.content}}</text></view>
       </view>
       <view class="message-footer">
         <image src="../../img/vote.png"></image>
