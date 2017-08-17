@@ -72,3 +72,28 @@
   height: 50rpx;
   width: 50rpx;
 }
+
+.fixed-bottom {
+  background: white;
+  position: fixed;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #e0e0e0;
+}
+.comment-input {
+  display: block;
+  background: #e7e7e7;
+  padding: 10rpx;
+  margin: 16rpx;
+  margin-right: 0;
+  border-radius: 6px;
+  flex: 1;
+}
+.comment-submit {
+  color: #edb000;
+  text-align: center;
+  flex-basis: 3.5em;
+  font-weight: 500;
+}

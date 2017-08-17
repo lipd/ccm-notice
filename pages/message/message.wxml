@@ -1,5 +1,9 @@
 <template is="message" data="{{...message}}"></template>
 <template is="vote" data="{{message}}"></template>
+<view class="fixed-bottom">
+  <input class="comment-input" bindinput="handleInput" value="{{inputContent}}" placeholder="有什么问题吗，写在这里吧!"/>
+  <view class="comment-submit" bindtap="handleSubmit">发布</view>
+</view>
 
 <template name="message">
     <view class="message-card">

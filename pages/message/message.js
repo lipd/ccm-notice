@@ -9,6 +9,9 @@ Page({
    */
   data: {
     message: {},
+    inputContent: '',
+    comment: false,
+    to: '',
   },
   handleShare: function () {
     wx.showToast({
@@ -16,7 +19,31 @@ Page({
       image: '../../img/share-hl.png',
     })
   },
-
+  handleInput: function (e) {
+    this.data.inputContent = e.detail.value
+  },
+  handleSubmit: function (e) {
+    // const token = wx.getStorageSync('token')
+    // const content = this.data.inputContent
+    // if (content.length === 0) {
+    //   wx.showToast({
+    //     title: '内容不得为空'
+    //   })
+    //   return false
+    // }
+    // wx.request({
+    //   url: `${config.protocol}://${config.host}/replys/${this.id}/comments`,
+    //   method: 'POST',
+    //   header: { 'Authorization': token },
+    //   data: { content },
+    //   success: (res) => {
+    //     wx.showToast({ title: '发布成功' })
+    //     const comments = res.data.data
+    //     const commentContent = ''
+    //     this.setData({ comments, commentContent })
+    //   }
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
