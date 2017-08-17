@@ -9,8 +9,9 @@ Page({
    */
   data: {
     message: {},
+    replys: [],
     inputContent: '',
-    comment: false,
+    isComment: false,
     to: '',
   },
   handleShare: function () {
@@ -23,26 +24,44 @@ Page({
     this.data.inputContent = e.detail.value
   },
   handleSubmit: function (e) {
-    // const token = wx.getStorageSync('token')
-    // const content = this.data.inputContent
-    // if (content.length === 0) {
-    //   wx.showToast({
-    //     title: '内容不得为空'
-    //   })
-    //   return false
-    // }
-    // wx.request({
-    //   url: `${config.protocol}://${config.host}/replys/${this.id}/comments`,
-    //   method: 'POST',
-    //   header: { 'Authorization': token },
-    //   data: { content },
-    //   success: (res) => {
-    //     wx.showToast({ title: '发布成功' })
-    //     const comments = res.data.data
-    //     const commentContent = ''
-    //     this.setData({ comments, commentContent })
-    //   }
-    // })
+    const content = this.data.inputContent
+    if (content.length === 0) {
+      wx.showToast({
+        title: '内容不得为空'
+      })
+      return false
+    }
+
+    const token = wx.getStorageSync('token')
+    const isComment = this.data.isComment
+    const to = this.data.to
+    if (!isComment) {
+      wx.request({
+        url: `${config.protocol}://${config.host}/messages/${this.id}/replys`,
+        method: 'POST',
+        header: { 'Authorization': token },
+        data: { content },
+        success: (res) => {
+          const newReply = res.data.reply
+          const replys = this.data.replys
+          replys.unshift(newReply)
+          this.setData({ replys })
+        }
+      })
+    } else {
+      // wx.request({
+      //   url: `${config.protocol}://${config.host}/replys/${this.id}/comments`,
+      //   method: 'POST',
+      //   header: { 'Authorization': token },
+      //   data: { content },
+      //   success: (res) => {
+      //     wx.showToast({ title: '发布成功' })
+      //     const comments = res.data.data
+      //     const commentContent = ''
+      //     this.setData({ comments, commentContent })
+      //   }
+      // })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -54,11 +73,12 @@ Page({
       method: 'GET',
       success: (res) => {
         const message = res.data.message
+        const replys = message.replys
         const date = new Date(message.createdAt)
         const minutesNum = date.getMinutes()
         const minutes = minutesNum < 10 ? '0' + minutesNum : minutesNum
         message.time = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${minutes}`
-        this.setData({ message })
+        this.setData({ message, replys })
       }
     })
   },
