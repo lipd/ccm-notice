@@ -77,11 +77,16 @@ Page({
       method: 'GET',
       success: (res) => {
         const message = res.data.message
-        const replys = message.replys
+        const replys = message.replys.map(reply => {
+          const time = new Date(reply.createdAt)
+          reply.time = `${time.getFullYear()}/${time.getMonth()}/${time.getDate()}`
+          return reply
+        })
         const date = new Date(message.createdAt)
         const minutesNum = date.getMinutes()
         const minutes = minutesNum < 10 ? '0' + minutesNum : minutesNum
         message.time = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${minutes}`
+        console.log(replys)
         this.setData({ message, replys })
       }
     })

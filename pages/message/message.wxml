@@ -1,5 +1,6 @@
 <template is="message" data="{{...message}}"></template>
 <template is="vote" data="{{message}}"></template>
+<template is="reply-list" data="{{replys}}"></template>
 <view class="fixed-bottom">
   <input class="comment-input" bindinput="handleInput" value="{{inputContent}}" placeholder="有什么问题吗，写在这里吧!"/>
   <view class="comment-submit" bindtap="handleSubmit">发布</view>
@@ -24,5 +25,21 @@
 <template name="vote">
   <view class="vote-card">
     <image class="vote-icon" src="../../img/vote-hl.png"></image>
+  </view>
+</template>
+
+<template name="reply-list">
+  <view class="reply-list-card">
+    <view class="reply-card" wx:for="{{replys}}" wx:for-item="reply" wx:key="{{reply._id}}">
+      <view class="reply-header">
+        <image class="avatar" src="{{reply.author.avatarUrl}}"></image>
+        <view class="header-message">
+          <view class="author-name">{{reply.author.nickName}}</view>
+          <view class="reply-time">{{reply.time}}</view>
+        </view>
+      </view>
+      <view class="reply-body">{{reply.content}}</view>
+      <view class="reply-footer"></view>
+    </view>
   </view>
 </template>

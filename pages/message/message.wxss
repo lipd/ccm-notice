@@ -67,10 +67,44 @@
 .vote-card {
   background: #fff;
   padding: 20rpx;
+  box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
+  margin-bottom: 30rpx;
 }
 .vote-icon {
   height: 50rpx;
   width: 50rpx;
+}
+.reply-list-card {
+  background: #fff;
+  box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
+  margin-bottom: 3.5em;
+}
+.reply-card {
+  border-top: solid 2rpx #f8f8f8;
+  padding: 24rpx 20rpx;
+}
+.reply-header {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  height: 70rpx;
+  width: 70rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.author-name {
+  font-size: 12pt;
+}
+.reply-time {
+  color: #999;
+  font-size: 10pt;
+  margin-top: 10rpx;
+}
+.reply-body {
+  margin-left: 70rpx;
+  padding: 20rpx 0 0 10rpx;
+  font-size: 12pt;
 }
 
 .fixed-bottom {
