@@ -14,6 +14,7 @@ exports.userLogin = (url) => {
                 success: res => {
                   wx.setStorageSync('token', res.data.token)
                   wx.setStorageSync('authorities', res.data.authorities)
+                  wx.setStorageSync('id', res.data.id)
                 }
               })
             }
