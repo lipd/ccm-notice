@@ -43,6 +43,8 @@ Page({
         data: { content },
         success: (res) => {
           const newReply = res.data.reply
+          const time = new Date(newReply.createdAt)
+          newReply.time = `${time.getFullYear()}/${time.getMonth()}/${time.getDate()}`
           const replys = this.data.replys
           const inputContent = ''
           replys.unshift(newReply)
