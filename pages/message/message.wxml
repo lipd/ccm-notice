@@ -2,7 +2,7 @@
 <template is="vote" data="{{message}}"></template>
 <template is="reply-list" data="{{replys}}"></template>
 <view class="fixed-bottom">
-  <input class="comment-input" focus="{{focus}}" bindinput="handleInput" value="{{inputContent}}" placeholder="{{placeholder}}"/>
+  <input class="comment-input" focus="{{focus}}" bindinput="handleInput" value="{{inputContent}}" placeholder="{{submitHandler.placeholder}}"/>
   <view class="comment-submit" bindtap="handleSubmit">发布</view>
 </view>
 
@@ -46,7 +46,11 @@
         </view>
       </view>
       <view class="reply-body">{{reply.content}}</view>
-      <view class="reply-footer"></view>
+      <view class="reply-footer" wx:if="{{reply.comments.length > 0}}">
+        <view class="comment-card" wx:key="comment._id" wx:for="{{reply.comments}}" wx:for-item="comment">
+          <view class="comment-content"><text class="comment-author">{{comment.author.nickName}}</text>: {{comment.content}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </template>

@@ -139,6 +139,19 @@
   padding: 20rpx 0 0 10rpx;
   font-size: 12pt;
 }
+.reply-footer {
+  margin-left: 70rpx;
+  margin-top: 20rpx;
+}
+.comment-card {
+  margin-left: 10rpx;
+  background: #fafafa;
+  padding: 14rpx;
+  font-size: 11pt;
+}
+.comment-author {
+  color: #efbd57;
+}
 
 .fixed-bottom {
   background: white;
