@@ -78,6 +78,23 @@
   background: #fff;
   box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
   margin-bottom: 3.5em;
+  padding-top: 15rpx;
+}
+.top-first {
+  background: #fafafa;
+  text-align: center;
+  font-size: 12pt;
+  padding: 15rpx 20rpx;
+  margin: 0 24rpx 15rpx;
+  border-radius: 12rpx;
+}
+.pencil {
+  margin-right: 0.8em
+}
+.top-second {
+  border-top: solid 2rpx #f8f8f8;
+  padding: 20rpx 30rpx;
+  font-size: 12pt;
 }
 .reply-card {
   border-top: solid 2rpx #f8f8f8;
@@ -93,6 +110,9 @@
   border-radius: 50%;
   margin-right: 10rpx;
 }
+.header-message {
+  flex: 1;
+}
 .author-name {
   font-size: 12pt;
 }
@@ -100,6 +120,19 @@
   color: #999;
   font-size: 10pt;
   margin-top: 10rpx;
+}
+.reply-at {
+  font-size: 12pt;
+  font-weight: 300;
+  color: #999;
+  flex-basis: 1em;
+}
+.reply-vote {
+  flex-basis: 3.5em;
+  font-size: 12pt;
+  width: 1em;
+  height: 1em;
+  text-align: right;
 }
 .reply-body {
   margin-left: 70rpx;

@@ -30,12 +30,19 @@
 
 <template name="reply-list">
   <view class="reply-list-card">
+    <view class="top-first"><text class="pencil">✎</text>对这条信息有什么问题吗？写在这里吧！</view>
+    <view class="top-second">{{replys.length}} 条评论</view>
     <view class="reply-card" wx:for="{{replys}}" wx:for-item="reply" wx:key="{{reply._id}}">
       <view class="reply-header">
         <image class="avatar" src="{{reply.author.avatarUrl}}"></image>
         <view class="header-message">
           <view class="author-name">{{reply.author.nickName}}</view>
           <view class="reply-time">{{reply.time}}</view>
+        </view>
+        <view class="reply-at">@</view>
+        <view class="reply-vote">
+          <image class="reply-vote" src="../../img/vote.png"></image>
+          <text wx:if="{{reply.vote > 0}}"> {{reply.vote}}</text>
         </view>
       </view>
       <view class="reply-body">{{reply.content}}</view>
