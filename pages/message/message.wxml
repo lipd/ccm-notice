@@ -48,7 +48,9 @@
       <view class="reply-body">{{reply.content}}</view>
       <view class="reply-footer" wx:if="{{reply.comments.length > 0}}">
         <view class="comment-card" wx:key="comment._id" wx:for="{{reply.comments}}" wx:for-item="comment">
-          <view class="comment-content"><text class="comment-author">{{comment.author.nickName}}</text>: {{comment.content}}</view>
+          <view class="comment-content">
+            <text class="comment-author">{{comment.author.nickName}}</text>: {{comment.content}}
+          </view>
         </view>
       </view>
     </view>
