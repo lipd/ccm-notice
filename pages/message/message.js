@@ -11,11 +11,13 @@ Page({
     message: {},
     replys: [],
     inputContent: '',
-    isComment: false,
-    replyId: null,
-    to: '',
+    submitHandler: {
+      placeholder: "有什么问题吗，写在这里吧!",
+      isComment: false,
+      replyId: null,
+      to: '',
+    },
     focus: false,
-    placeholder: "有什么问题吗，写在这里吧!"
   },
   handleShare: function () {
     wx.showToast({
@@ -28,22 +30,24 @@ Page({
   },
   handleTop: function () {
     this.setData({
-      placeholder: "有什么问题吗，写在这里吧!",
+      submitHandler: {
+        placeholder: "有什么问题吗，写在这里吧!",
+        isComment: false,
+      },
       focus: true,
-      isComment: false,
-      replyId: null,
-      to: ''
     })
   },
   handleReplyAt: function (e) {
     const author = e.currentTarget.dataset.author
     const id = e.currentTarget.dataset.id
     this.setData({
-      placeholder: `回复${author}: `,
+      submitHandler: {
+        placeholder: `回复${author}: `,
+        isComment: true,
+        replyId: id,
+        to: ''
+      },
       focus: true,
-      isComment: true,
-      replyId: id,
-      to: ''
     })
   },
   handleSubmit: function (e) {
@@ -56,7 +60,8 @@ Page({
     }
 
     const token = wx.getStorageSync('token')
-    const isComment = this.data.isComment
+    const isComment = this.data.submitHandler.isComment
+    const replyId = this.data.submitHandler.replyId
     const to = this.data.to
     if (!isComment) {
       wx.request({
@@ -78,18 +83,22 @@ Page({
         }
       })
     } else {
-      // wx.request({
-      //   url: `${config.protocol}://${config.host}/replys/${this.id}/comments`,
-      //   method: 'POST',
-      //   header: { 'Authorization': token },
-      //   data: { content },
-      //   success: (res) => {
-      //     wx.showToast({ title: '发布成功' })
-      //     const comments = res.data.data
-      //     const commentContent = ''
-      //     this.setData({ comments, commentContent })
-      //   }
-      // })
+      const sendData = to ? { content, to } : { content }
+      wx.request({
+        url: `${config.protocol}://${config.host}/replys/${replyId}/comments`,
+        method: 'POST',
+        header: { 'Authorization': token },
+        data: sendData, // FIXME:
+        success: (res) => {
+          wx.showToast({ title: '发布成功' })
+          const comments = res.data.data
+          const replys = this.data.replys
+          const reply = replys.find(reply => reply._id === replyId)
+          reply.comments = comments
+          const inputContent = ''
+          this.setData({ replys, inputContent })
+        }
+      })
     }
   },
   /**
