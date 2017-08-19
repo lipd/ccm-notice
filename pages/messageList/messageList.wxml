@@ -5,7 +5,7 @@
 </navigator>
 
 <template name="everyday-message-list">
-  <view class="everyday-message" wx:key="{{dailyMessage.date}}" wx:for="{{sortedMessages}}" wx:for-item="dailyMessages">
+  <view class="everyday-message" wx:key="{{dailyMessage.date}}" wx:for="{{sortedMessages}}" wx:for-item="dailyMessages" wx:for-index="index">
     <view class="message-date">
       <text class="date-text">{{dailyMessages.date}}</text>
     </view>
@@ -19,8 +19,8 @@
         <view class="message-content"><text>{{message.content}}</text></view>
       </view>
       <view class="message-footer">
-        <image wx:if="{{message.voted}}" src="../../img/vote-hl.png" bindtap="handleDownVote" data-id="{{message.id}}"></image>
-        <image wx:else src="../../img/vote.png" bindtap="handleUpVote" data-id="{{message.id}}"></image>
+        <image wx:if="{{message.voted}}" src="../../img/vote-hl.png" bindtap="handleDownVote" data-id="{{message.id}}" data-index="{{index}}"></image>
+        <image wx:else src="../../img/vote.png" bindtap="handleUpVote" data-id="{{message.id}}" data-index="{{index}}"></image>
         <navigator hover-class="none" url="/pages/message/message?id={{message.id}}">
           <image src="../../img/command.png"></image>
         </navigator>

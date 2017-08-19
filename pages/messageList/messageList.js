@@ -41,15 +41,19 @@ Page({
   },
   handleUpVote: function (e) {
     const id = e.currentTarget.dataset.id
+    const index = e.currentTarget.dataset.index
     const token = wx.getStorageSync('token')
     wx.request({
       url: `${config.protocol}://${config.host}/messages/${id}/upvote`,
       header: { 'Authorization': token },
       method: 'PUT',
-      success: function(res){
-        console.log(res.data)
+      success: (res) => {
+        const sortedMessages = this.data.sortedMessages
+        const message = sortedMessages[index].messages.find(message => message.id === id)
+        message.voted = true
+        this.setData({ sortedMessages })
       },
-      fail: function() {
+      fail: () => {
         wx.showToast({
           title: '投票失败'
         })
