@@ -19,7 +19,8 @@
         <view class="message-content"><text>{{message.content}}</text></view>
       </view>
       <view class="message-footer">
-        <image src="../../img/vote.png"></image>
+        <image wx:if="{{message.voted}}" src="../../img/vote-hl.png"></image>
+        <image wx:else src="../../img/vote.png"></image>
         <navigator hover-class="none" url="/pages/message/message?id={{message.id}}">
           <image src="../../img/command.png"></image>
         </navigator>

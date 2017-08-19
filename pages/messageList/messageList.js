@@ -4,7 +4,8 @@ const config = app.config
 Page({
   data: {
     sortedMessages: [],
-    canSendMessage: wx.getStorageSync('authorities').canSendMessage
+    canSendMessage: wx.getStorageSync('authorities').canSendMessage,
+    userId: wx.getStorageSync('id')
   },
   onReady: function () {
     wx.request({
@@ -40,6 +41,7 @@ Page({
     const sortedMessages = []
     const week = '日一二三四五六'
     for (const message of messages) {
+      const userId = this.data.userId
       const dateObj = new Date(message.createdAt)
       const date = `${dateObj.getMonth()}月${dateObj.getDate()}日 星期${week[dateObj.getDay()]}`
       const minutes = dateObj.getMinutes()
@@ -48,7 +50,8 @@ Page({
         title: message.title,
         content: message.content,
         id: message._id,
-        time: `${dateObj.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`
+        time: `${dateObj.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`,
+        voted: message.votes.includes(userId)
       }
       const dailyMessages = sortedMessages.find(dailyMessages => dailyMessages.date === date)
       if (dailyMessages) {
