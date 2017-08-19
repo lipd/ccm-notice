@@ -35,6 +35,27 @@ Page({
       }
     })
   },
+  handleDownVote: function (e) {
+    const id = e.currentTarget.dataset.id
+    console.log(id)
+  },
+  handleUpVote: function (e) {
+    const id = e.currentTarget.dataset.id
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/messages/${id}/upvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: function(res){
+        console.log(res.data)
+      },
+      fail: function() {
+        wx.showToast({
+          title: '投票失败'
+        })
+      }
+    })
+  },
   // divide message into different array by date
   // switch the date format
   sortMessages: function(messages) {
