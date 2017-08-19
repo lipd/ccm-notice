@@ -12,7 +12,10 @@ Page({
     replys: [],
     inputContent: '',
     isComment: false,
+    replyId: null,
     to: '',
+    focus: false,
+    placeholder: "有什么问题吗，写在这里吧!"
   },
   handleShare: function () {
     wx.showToast({
@@ -22,6 +25,26 @@ Page({
   },
   handleInput: function (e) {
     this.data.inputContent = e.detail.value
+  },
+  handleTop: function () {
+    this.setData({
+      placeholder: "有什么问题吗，写在这里吧!",
+      focus: true,
+      isComment: false,
+      replyId: null,
+      to: ''
+    })
+  },
+  handleReplyAt: function (e) {
+    const author = e.currentTarget.dataset.author
+    const id = e.currentTarget.dataset.id
+    this.setData({
+      placeholder: `回复${author}: `,
+      focus: true,
+      isComment: true,
+      replyId: id,
+      to: ''
+    })
   },
   handleSubmit: function (e) {
     const content = this.data.inputContent
@@ -93,7 +116,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
