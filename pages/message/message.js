@@ -17,6 +17,7 @@ Page({
       replyId: null,
       to: '',
     },
+    voted: false,
     focus: false,
   },
   handleShare: function () {
@@ -48,6 +49,48 @@ Page({
         to: ''
       },
       focus: true,
+    })
+  },
+  handleMessageDownVote: function () {
+    const id = this.id
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/messages/${id}/downvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: (res) => {
+        const voted = false
+        this.setData({ voted })
+        const pages = getCurrentPages()
+        const lastPage = pages[pages.length - 2]
+        lastPage.onReady()
+      },
+      fail: () => {
+        wx.showToast({
+          title: '取消投票失败'
+        })
+      }
+    })
+  },
+  handleMessageUpVote: function () {
+    const id = this.id
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/messages/${id}/upvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: (res) => {
+        const voted = true
+        this.setData({ voted })
+        const pages = getCurrentPages()
+        const lastPage = pages[pages.length - 2]
+        lastPage.onReady()
+      },
+      fail: () => {
+        wx.showToast({
+          title: '投票失败'
+        })
+      }
     })
   },
   handleSubmit: function (e) {
@@ -111,6 +154,8 @@ Page({
       method: 'GET',
       success: (res) => {
         const message = res.data.message
+        const userId = wx.getStorageSync('id')
+        const voted = message.votes.includes(userId)
         const replys = message.replys.map(reply => {
           const time = new Date(reply.createdAt)
           reply.time = `${time.getFullYear()}/${time.getMonth()}/${time.getDate()}`
@@ -120,8 +165,7 @@ Page({
         const minutesNum = date.getMinutes()
         const minutes = minutesNum < 10 ? '0' + minutesNum : minutesNum
         message.time = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${minutes}`
-        console.log(replys)
-        this.setData({ message, replys })
+        this.setData({ message, replys, voted })
       }
     })
   },
