@@ -37,7 +37,24 @@ Page({
   },
   handleDownVote: function (e) {
     const id = e.currentTarget.dataset.id
-    console.log(id)
+    const index = e.currentTarget.dataset.index
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/messages/${id}/downvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: (res) => {
+        const sortedMessages = this.data.sortedMessages
+        const message = sortedMessages[index].messages.find(message => message.id === id)
+        message.voted = false
+        this.setData({ sortedMessages })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '取消投票失败'
+        })
+      }
+    })
   },
   handleUpVote: function (e) {
     const id = e.currentTarget.dataset.id
