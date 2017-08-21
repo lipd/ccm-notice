@@ -53,14 +53,16 @@ Page({
   },
   handleMessageDownVote: function () {
     const id = this.id
+    const message = this.data.message
     const token = wx.getStorageSync('token')
     wx.request({
       url: `${config.protocol}://${config.host}/messages/${id}/downvote`,
       header: { 'Authorization': token },
       method: 'PUT',
       success: (res) => {
-        const voted = false
-        this.setData({ voted })
+        message.voted = false
+        message.votesNum -= 1
+        this.setData({ message })
         const pages = getCurrentPages()
         const lastPage = pages[pages.length - 2]
         lastPage.onReady()
@@ -74,14 +76,16 @@ Page({
   },
   handleMessageUpVote: function () {
     const id = this.id
+    const message = this.data.message
     const token = wx.getStorageSync('token')
     wx.request({
       url: `${config.protocol}://${config.host}/messages/${id}/upvote`,
       header: { 'Authorization': token },
       method: 'PUT',
       success: (res) => {
-        const voted = true
-        this.setData({ voted })
+        message.voted = true
+        message.votesNum += 1
+        this.setData({ message })
         const pages = getCurrentPages()
         const lastPage = pages[pages.length - 2]
         lastPage.onReady()
@@ -155,7 +159,8 @@ Page({
       success: (res) => {
         const message = res.data.message
         const userId = wx.getStorageSync('id')
-        const voted = message.votes.includes(userId)
+        message.voted = message.votes.includes(userId)
+        message.votesNum = message.votes.length
         const replys = message.replys.map(reply => {
           const time = new Date(reply.createdAt)
           reply.time = `${time.getFullYear()}/${time.getMonth()}/${time.getDate()}`
@@ -165,7 +170,7 @@ Page({
         const minutesNum = date.getMinutes()
         const minutes = minutesNum < 10 ? '0' + minutesNum : minutesNum
         message.time = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${date.getHours()}:${minutes}`
-        this.setData({ message, replys, voted })
+        this.setData({ message, replys })
       }
     })
   },

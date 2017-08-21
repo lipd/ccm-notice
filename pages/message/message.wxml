@@ -1,10 +1,5 @@
 <template is="message" data="{{...message}}"></template>
 
-<view class="vote-card">
-  <image wx:if="{{voted}}" class="vote-icon" src="../../img/vote-hl.png" bindtap="handleMessageDownVote"></image>
-  <image wx:else class="vote-icon" src="../../img/vote.png" bindtap="handleMessageUpVote"></image>
-</view>
-
 <template is="reply-list" data="{{replys}}"></template>
 <view class="fixed-bottom">
   <input class="comment-input" focus="{{focus}}" bindinput="handleInput" value="{{inputContent}}" placeholder="{{submitHandler.placeholder}}"/>
@@ -12,23 +7,24 @@
 </view>
 
 <template name="message">
-    <view class="message-card">
-      <view class="message-header">
-        <view class="message-author">{{department}}</view>
-      </view>
-      <view class="message-body">
-        <view class="message-title">{{title}}</view>
-        <view class="message-content"><text>{{content}}</text></view>
-      </view>
-      <view class="message-footer">
-        <view class="message-time">{{time}}</view>
-        <view class="message-share" bindtap="handleShare">...</view>
-      </view>
+  <view class="message-card">
+    <view class="message-header">
+      <view class="message-author">{{department}}</view>
     </view>
-</template>
-
-<template name="vote">
-
+    <view class="message-body">
+      <view class="message-title">{{title}}</view>
+      <view class="message-content"><text>{{content}}</text></view>
+    </view>
+    <view class="message-footer">
+      <view class="message-time">{{time}}</view>
+      <view class="message-share" bindtap="handleShare">...</view>
+    </view>
+    <view class="vote-message">
+      <image wx:if="{{voted}}" class="vote-icon" src="../../img/vote-hl.png" bindtap="handleMessageDownVote"></image>
+      <image wx:else class="vote-icon" src="../../img/vote.png" bindtap="handleMessageUpVote"></image>
+      <text wx:if="{{votesNum > 0}}">{{votesNum}} 人认为重要</text>
+    </view>
+  </view>
 </template>
 
 <template name="reply-list">

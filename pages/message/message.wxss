@@ -21,7 +21,6 @@
   font-size: 10pt;
 }
 .message-card {
-  margin: 0 0 30rpx;
   font-size: 11pt;
   background: #fff;
   box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
@@ -64,11 +63,19 @@
   text-align: right;
   letter-spacing: 4rpx;
 }
-.vote-card {
+.vote-message {
+  display: flex;
+  align-items: center;
   background: #fff;
-  padding: 20rpx;
-  box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
+  padding: 20rpx 0;
+  margin: 0 20rpx;
+  border-top: 2rpx solid #f6f6f6;
   margin-bottom: 30rpx;
+  font-weight: 500;
+  font-size: 10pt;
+}
+.vote-message image {
+  margin-right: 36rpx;
 }
 .vote-icon {
   height: 50rpx;
