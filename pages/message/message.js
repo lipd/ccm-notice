@@ -97,6 +97,50 @@ Page({
       }
     })
   },
+  handleReplyUpVote: function (e) {
+    const id = e.currentTarget.dataset.id
+    const index = e.currentTarget.dataset.index
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/replys/${id}/upvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: (res) => {
+        const replys = this.data.replys
+        const reply = replys[index]
+        reply.voted = true
+        reply.votesNum += 1
+        this.setData({ replys })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '投票失败'
+        })
+      }
+    })
+  },
+  handleReplyDownVote: function (e) {
+    const id = e.currentTarget.dataset.id
+    const index = e.currentTarget.dataset.index
+    const token = wx.getStorageSync('token')
+    wx.request({
+      url: `${config.protocol}://${config.host}/replys/${id}/upvote`,
+      header: { 'Authorization': token },
+      method: 'PUT',
+      success: (res) => {
+        const replys = this.data.replys
+        const reply = replys[index]
+        reply.voted = false
+        reply.votesNum -= 1
+        this.setData({ replys })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '取消投票失败'
+        })
+      }
+    })
+  },
   handleSubmit: function (e) {
     const content = this.data.inputContent
     if (content.length === 0) {
@@ -163,7 +207,11 @@ Page({
         message.votesNum = message.votes.length
         const replys = message.replys.map(reply => {
           const time = new Date(reply.createdAt)
+          const votes = reply.votes
+          const userId = wx.getStorageSync('id')
           reply.time = `${time.getFullYear()}/${time.getMonth()}/${time.getDate()}`
+          reply.voted = votes.includes(userId)
+          reply.votesNum = votes.length
           return reply
         })
         const date = new Date(message.createdAt)
@@ -220,7 +268,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.log(res)
     return {
       title: `${this.data.message.title}`,
       path: `/pages/message/message?id=${this.id}`

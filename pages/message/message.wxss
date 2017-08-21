@@ -135,11 +135,21 @@
   flex-basis: 1em;
 }
 .reply-vote {
+  text-align: right;
   flex-basis: 3.5em;
   font-size: 12pt;
-  width: 1em;
+}
+.reply-vote image {
+  display: inline-block;
   height: 1em;
-  text-align: right;
+  width: 1em;
+}
+.vote-count {
+  position: relative;
+  top: -4rpx;
+  font-size: 11pt;
+  padding-left: 0.4em;
+  color: #999;
 }
 .reply-body {
   margin-left: 70rpx;

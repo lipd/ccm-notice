@@ -31,7 +31,7 @@
   <view class="reply-list-card">
     <view class="top-first" bindtap="handleTop"><text class="pencil">✎</text>对这条信息有什么问题吗？写在这里吧！</view>
     <view class="top-second">{{replys.length}} 条评论</view>
-    <view class="reply-card" wx:for="{{replys}}" wx:for-item="reply" wx:key="{{reply._id}}">
+    <view class="reply-card" wx:for="{{replys}}" wx:for-item="reply" wx:key="{{reply._id}}" wx:for-index="index">
       <view class="reply-header">
         <image class="avatar" src="{{reply.author.avatarUrl}}"></image>
         <view class="header-message">
@@ -40,8 +40,9 @@
         </view>
         <view class="reply-at" bindtap="handleReplyAt" data-author="{{reply.author.nickName}}" data-id="{{reply._id}}">@</view>
         <view class="reply-vote">
-          <image class="reply-vote" src="../../img/vote.png"></image>
-          <text wx:if="{{reply.vote > 0}}"> {{reply.vote}}</text>
+          <image wx:if="{{reply.voted}}" src="../../img/vote-hl.png" bindtap="handleReplyDownVote" data-id="{{reply._id}}" data-index="{{index}}"></image>
+          <image wx:else src="../../img/vote.png" data-id="{{reply._id}}" bindtap="handleReplyUpVote" data-index="{{index}}"></image>
+          <text class="vote-count" wx:if="{{reply.votesNum > 0}}">{{reply.votesNum}}</text>
         </view>
       </view>
       <view class="reply-body">{{reply.content}}</view>
