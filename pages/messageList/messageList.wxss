@@ -29,8 +29,8 @@
   border-radius: 10px 10px 0 0;
   display: flex;
   align-items: center;
-  font-size: 14pt;
-  font-weight: 300;
+  font-size: 12pt;
+  font-weight: 500;
   padding: 20rpx 30rpx 0;
 }
 .message-author {
