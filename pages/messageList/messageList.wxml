@@ -26,6 +26,10 @@
         </navigator>
         <image src="../../img/share.png" data-id="{{message.id}}" bindtap="handleShare"></image>
       </view>
+      <view class="message-count" wx:if="{{message.votes > 0}}">
+        <image class="count-image" src="../../img/vote-hl.png"></image>
+        {{message.votes}} 人认为重要
+      </view>
     </view>
   </view>
 </template>

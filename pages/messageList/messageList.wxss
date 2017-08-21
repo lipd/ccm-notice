@@ -55,11 +55,25 @@
   color: #efbd57;
 }
 .message-footer {
-  padding: 10rpx 30rpx 30rpx;
+  padding: 0rpx 30rpx 16rpx;
   display: flex;
 }
 .message-footer image {
   height: 50rpx;
   width: 50rpx;
   margin-right: 60rpx;
+}
+.message-count {
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #f6f6f6;
+  font-weight: 500;
+  font-size: 10pt;
+}
+.count-image {
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 36rpx;
 }

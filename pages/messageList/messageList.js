@@ -47,6 +47,7 @@ Page({
         const sortedMessages = this.data.sortedMessages
         const message = sortedMessages[index].messages.find(message => message.id === id)
         message.voted = false
+        message.votes -= 1
         this.setData({ sortedMessages })
       },
       fail: () => {
@@ -68,6 +69,7 @@ Page({
         const sortedMessages = this.data.sortedMessages
         const message = sortedMessages[index].messages.find(message => message.id === id)
         message.voted = true
+        message.votes += 1
         this.setData({ sortedMessages })
       },
       fail: () => {
@@ -93,7 +95,8 @@ Page({
         content: message.content,
         id: message._id,
         time: `${dateObj.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`,
-        voted: message.votes.includes(userId)
+        voted: message.votes.includes(userId),
+        votes: message.votes.length
       }
       const dailyMessages = sortedMessages.find(dailyMessages => dailyMessages.date === date)
       if (dailyMessages) {
