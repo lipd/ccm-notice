@@ -5,10 +5,8 @@
   margin: 20rpx;
   font-size: 12pt;
   background: #fff;
-  box-shadow: 2rpx 2rpx 2px 2rpx #c6c6c6;
 }
 .card-transparent {
-  box-shadow: none;
   background: transparent;
 }
 
