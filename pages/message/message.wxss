@@ -84,7 +84,6 @@
 .reply-list-card {
   background: #fff;
   box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
-  margin-bottom: 3.5em;
   padding-top: 15rpx;
 }
 .top-first {
@@ -193,4 +192,8 @@
   text-align: center;
   flex-basis: 3.5em;
   font-weight: 500;
+}
+
+.bottom {
+  padding: 2em;
 }

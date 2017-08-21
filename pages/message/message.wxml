@@ -1,6 +1,7 @@
 <template is="message" data="{{...message}}"></template>
 
 <template is="reply-list" data="{{replys}}"></template>
+<view class="bottom"></view>
 <view class="fixed-bottom">
   <input class="comment-input" focus="{{focus}}" bindinput="handleInput" value="{{inputContent}}" placeholder="{{submitHandler.placeholder}}"/>
   <view class="comment-submit" bindtap="handleSubmit">发布</view>
