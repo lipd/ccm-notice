@@ -15,7 +15,7 @@
       <input class="widget" placeholder="标题" confirm-type="next" name="title" />
     </view>
     <view class="field">
-      <textarea class="widget" placeholder="内容" name="content" />
+      <textarea class="widget" placeholder="内容" name="content" maxlength="400"/>
     </view>
   </view>
 
