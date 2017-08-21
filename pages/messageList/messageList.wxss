@@ -24,7 +24,6 @@
   margin: 10rpx 0 30rpx;
   font-size: 11pt;
   background: #fff;
-  box-shadow: 0rpx 2rpx 2rpx #c6c6c6;
 }
 .message-header {
   border-radius: 10px 10px 0 0;
