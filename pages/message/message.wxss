@@ -102,7 +102,7 @@
 }
 .reply-card {
   border-top: solid 3rpx #f8f8f8;
-  padding: 24rpx 20rpx;
+  padding: 30rpx 20rpx;
 }
 .reply-header {
   display: flex;
@@ -150,7 +150,7 @@
 }
 .reply-body {
   margin-left: 70rpx;
-  padding: 20rpx 0 0 10rpx;
+  padding: 30rpx 0 0 15rpx;
   font-size: 12pt;
 }
 .reply-footer {
