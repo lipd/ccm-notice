@@ -38,7 +38,7 @@ Page({
       focus: true,
     })
   },
-  handleReplyAt: function (e) {
+  handleReplyComment: function (e) {
     const author = e.currentTarget.dataset.author
     const id = e.currentTarget.dataset.id
     this.setData({

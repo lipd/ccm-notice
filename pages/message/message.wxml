@@ -39,7 +39,7 @@
           <view class="author-name">{{reply.author.nickName}}</view>
           <view class="reply-time">{{reply.time}}</view>
         </view>
-        <view class="reply-at" bindtap="handleReplyAt" data-author="{{reply.author.nickName}}" data-id="{{reply._id}}">@</view>
+        <image class="reply-comment" src="../../img/reply.png" bindtap="handleReplyComment" data-author="{{reply.author.nickName}}" data-id="{{reply._id}}"></image>
         <view class="reply-vote">
           <image wx:if="{{reply.voted}}" src="../../img/vote-hl.png" bindtap="handleReplyDownVote" data-id="{{reply._id}}" data-index="{{index}}"></image>
           <image wx:else src="../../img/vote.png" data-id="{{reply._id}}" bindtap="handleReplyUpVote" data-index="{{index}}"></image>
